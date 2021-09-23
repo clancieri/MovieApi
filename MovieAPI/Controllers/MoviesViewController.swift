@@ -39,26 +39,23 @@ class MoviesViewController: UIViewController {
     }
 }
     
-
 // TableView
 
 extension MoviesViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return viewModel.numberOfSections()
     }
    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return viewModel.numberOfRowsInSection(section: section)
-        return viewModel.results.count
+        return viewModel.numberOfRows(at: section)
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "moviecell") as! MovieTableViewCell
-        let result = viewModel.results[indexPath.row]
+        let result = viewModel.item(at: indexPath)
         cell.configure(for: result)
         return cell
 
     }
-
 }
 
 extension MoviesViewController: UITableViewDelegate{
@@ -70,8 +67,6 @@ extension MoviesViewController: UITableViewDelegate{
         }
         page += 1
         viewModel.loadPopularMovies(page: page)
-        
-        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -85,7 +80,6 @@ extension MoviesViewController: UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 170
+        return CGFloat(viewModel.heightForRow(at: indexPath))
     }
 }
-

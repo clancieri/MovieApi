@@ -24,4 +24,19 @@ class MovieViewModel {
         })
     
     }
+    func numberOfSections() -> Int {
+        return 1
+    }
+    
+    func numberOfRows(at section: Int) -> Int {
+        return results.count
+    }
+    
+    func item(at indexPath: IndexPath) -> Movie {
+        return results[indexPath.row]
+    }
+    
+    func heightForRow(at indexPath: IndexPath) -> Int {
+        return 170
+    }
 }
