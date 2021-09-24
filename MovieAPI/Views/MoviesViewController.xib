@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MoviesViewController" customModule="MovieAPI" customModuleProvider="target">
             <connections>
+                <outlet property="activity" destination="G3P-8i-BCP" id="nc2-E8-qe9"/>
                 <outlet property="tableView" destination="GjY-2C-4Mb" id="Z93-nh-m5p"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -34,6 +35,10 @@
                     <color key="backgroundColor" red="0.090196078431372548" green="0.031372549019607843" blue="0.16470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="sectionIndexBackgroundColor" red="0.090196078431372548" green="0.031372549019607843" blue="0.16470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </tableView>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="G3P-8i-BCP">
+                    <rect key="frame" x="188.66666666666666" y="349.66666666666669" width="37" height="37"/>
+                    <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -41,10 +46,12 @@
                 <constraint firstItem="GjY-2C-4Mb" firstAttribute="top" secondItem="aGl-qg-X10" secondAttribute="bottom" id="AL2-ay-jXf"/>
                 <constraint firstItem="aGl-qg-X10" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="LFW-cq-1kT"/>
                 <constraint firstItem="aGl-qg-X10" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="PsL-eR-DBa"/>
+                <constraint firstItem="G3P-8i-BCP" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="RV8-iQ-zSk"/>
                 <constraint firstItem="GjY-2C-4Mb" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="S6s-ia-a4g"/>
                 <constraint firstItem="aGl-qg-X10" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="dgS-Ec-va7"/>
                 <constraint firstItem="GjY-2C-4Mb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="fev-Kp-rLF"/>
                 <constraint firstItem="GjY-2C-4Mb" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="gqE-Me-3Yy"/>
+                <constraint firstItem="G3P-8i-BCP" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="w1r-D3-xKf"/>
             </constraints>
             <point key="canvasLocation" x="131.8840579710145" y="98.4375"/>
         </view>

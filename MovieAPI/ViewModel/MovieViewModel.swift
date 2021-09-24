@@ -22,7 +22,6 @@ class MovieViewModel {
             movies in
             self.results.append(contentsOf: movies)
         })
-    
     }
     func numberOfSections() -> Int {
         return 1
@@ -36,7 +35,4 @@ class MovieViewModel {
         return results[indexPath.row]
     }
     
-    func heightForRow(at indexPath: IndexPath) -> Int {
-        return 170
-    }
 }

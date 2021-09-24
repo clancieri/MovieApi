@@ -8,32 +8,35 @@
 import UIKit
 
 class MoviesViewController: UIViewController {
-    
 
-  
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activity: UIActivityIndicatorView!
     
     var viewModel = MovieViewModel()
-    var movie: Movie?
     var page = 1
-    var isLoading = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.tableView.register(UINib(nibName: "MovieTableViewCell", bundle: nil), forCellReuseIdentifier: "moviecell")
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        configureActivity()
         viewModel.loadPopularMovies(page: page)
         bind()
         
     }
+    
+    func configureActivity(){
+        activity.isHidden = false
+        activity.startAnimating()
+    }
+    
     private func bind() {
-        isLoading = true
         viewModel.refreshData = { [weak self] () in
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
-                self?.isLoading = false
+                self?.activity.stopAnimating()
+                self?.activity.isHidden = true
             }
         }
     }
@@ -59,16 +62,16 @@ extension MoviesViewController: UITableViewDataSource {
 }
 
 extension MoviesViewController: UITableViewDelegate{
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == viewModel.results.count - 5 {
-            guard !isLoading else {
-                return
-            }
-        }
-        page += 1
-        viewModel.loadPopularMovies(page: page)
-    }
-    
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//       if indexPath.row == viewModel.results.count - 5 {
+//            guard !isLoading else {
+//                return
+//            }
+//        }
+//       page += 1
+//       viewModel.loadPopularMovies(page: page)
+//   }
+//
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let selectedResults = viewModel.results[indexPath.row]
@@ -80,6 +83,6 @@ extension MoviesViewController: UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(viewModel.heightForRow(at: indexPath))
+        return 170
     }
 }
